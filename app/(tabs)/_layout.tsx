@@ -1,12 +1,13 @@
 import { View, Text, useWindowDimensions } from 'react-native'
 import React from 'react'
-import { Tabs } from 'expo-router'
+import { Tabs, useSegments } from 'expo-router'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Colors from '@/constants/Colors'
 import { Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 
 const Layout = () => {
     const {width} = useWindowDimensions();
+    const segments = useSegments();
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <Tabs screenOptions={{ 
@@ -51,6 +52,9 @@ const Layout = () => {
                         headerShown: false,
                         title: 'Chats',
                         tabBarIcon: ({ color }) => <Ionicons size={width * 0.08} name="chatbubbles" color={color} />,
+                        tabBarStyle: {
+                            display: segments[2] === '[id]' ? 'none' : 'flex'
+                        }
                     }}
                 />
                 <Tabs.Screen

@@ -1,11 +1,13 @@
-import { View, Text, TouchableOpacity, TouchableHighlight } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { Link, Stack, useRouter } from 'expo-router'
 import Colors from '@/constants/Colors'
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 
+
 const Layout = () => {
     const router = useRouter();
+    
     return (
         <Stack>
             <Stack.Screen
@@ -58,6 +60,51 @@ const Layout = () => {
                             <MaterialCommunityIcons name="close-circle" size={30} color={Colors.gray} />
                         </TouchableOpacity>
                     )
+                }}
+            />
+             <Stack.Screen
+                name='[id]'
+                options={{
+                    title: '',
+                    headerTransparent: true,
+                    headerBlurEffect: 'light',
+                    headerBackTitleVisible: false,
+                    headerShadowVisible: false,
+                    headerTitle: () => (
+                        <View style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            gap: 20,
+                            paddingBottom: 4,
+                        }}>
+                            <Image 
+                                source={{uri: "https://i.pravatar.cc/150?u=saundralott@genmy.com"}}
+                                style={{width: 40, height: 40, borderRadius: 40}}
+                            />
+                            <Text style={{fontSize: 16, fontWeight: '500'}}>Miracle Cruz</Text>
+                        </View>
+                    ),
+                    headerRight: () => (
+                        <View 
+                            style={{
+                                flexDirection: 'row',
+                                gap: 20,
+                                alignItems: 'center',
+                                width: 200,
+                                justifyContent: 'flex-end'
+                            }}
+                        >
+                            <TouchableOpacity>
+                                <Ionicons size={24} name="videocam-outline" color={Colors.primary} />
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Ionicons size={24} name="call-outline" color={Colors.primary} />
+                            </TouchableOpacity>
+                        </View>
+                    ),
+                    headerStyle: {
+                        backgroundColor: Colors.background
+                    }
                 }}
             />
         </Stack>
